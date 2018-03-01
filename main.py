@@ -1,9 +1,10 @@
-
+# Charles Sambo
+# www.linkedin.com/charlessambo
+# @stochasticquant
+# quantengineer@outlook.com
 
 # Derivate pricing application
 # A great scientist is a dreamer and a skeptic.
-
-
 
 import helper_functions as hf
 import scenario_generation_engine as sge
