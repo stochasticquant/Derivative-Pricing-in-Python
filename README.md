@@ -1,0 +1,2 @@
+# Derivative-Pricing-in-Python
+Implementation of financial models in pricing derivatives and implementation of python object oriented programming (OOP) features:  1. Financial derivative pricing using two methods         i. Risk neutral pricing         ii. Black Scholes pricing  2. Python implementation methods         i. Functions        ii. classes       iii. class inheritance        iv. static methods         v. class methods
