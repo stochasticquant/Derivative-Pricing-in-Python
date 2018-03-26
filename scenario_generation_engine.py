@@ -10,8 +10,8 @@ from numpy import cumsum, maximum, random, mean, std
 from scipy.stats import norm
 from numpy import *
 
-import numexpr as ne
-
+#import numexpr as ne
+# import from file : scenario_generation_engine.py
 import parameters as pram
 
 class Scenario_Genaration_Engine(pram.Parameters):

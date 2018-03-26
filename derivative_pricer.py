@@ -5,21 +5,17 @@
 #   - Binomial tree 
 
 import abc
-from math import exp, sqrt
+from math import exp, sqrt, factorial
 from time import time
 import matplotlib.pyplot as plt
-from numpy import cumsum, maximum, random, mean, std
+from numpy import cumsum, maximum, random, mean, std, log
 from scipy.stats import norm
-from numpy import *
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import seaborn as sns
-import numexpr as ne
 
+# import from file : scenario_generation_engine.py
 import scenario_generation_engine as sge
-
-
-
 
 class DerivativePricer(sge.Scenario_Genaration_Engine):
     '''class implemetation of various methods of option prcing methods. Requires
@@ -77,6 +73,25 @@ class DerivativePricer(sge.Scenario_Genaration_Engine):
 
         except ArithmeticError:
             print("Input parameters not correct")
+
+    @staticmethod
+    def nCr(n, r):
+        'function to calculate n cobinations r times'
+        f = factorial
+        return f(n) / f(r) / f(n-r)
+
+
+    def binomialTree(self):
+        '''method to price option using the binomial tree method.
+        The binomial model was first proposed by Cox, Ross and Rubinstein in 1979 '''
+        
+        self.u = exp(self.sigma * sqrt(self.T / self.steps))
+        self.d = 1 / self.u
+        self.q = (self.r - self.d) / (self.u - self.d)
+        self.price = 0
+        self.temp_stock = 0
+        self.temp_payout = 0
+
 
     def __repr__(self):
         'method used for debugging and meant to be seen by other developers showing how object is created'

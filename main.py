@@ -5,11 +5,11 @@
 
 # Derivate pricing application
 # A great scientist is a dreamer and a skeptic.
-
+#%%
 import helper_functions as hf
 import scenario_generation_engine as sge
 
-
+#%%
 def main():
 
     # testing implementations
@@ -21,7 +21,6 @@ def main():
 
     # plot asset price paths
     hf.price_path_plot(report[0], 100)
-
 
 if __name__ == "__main__":
     main()

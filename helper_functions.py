@@ -1,6 +1,7 @@
 
 # helper functions 
 
+import math
 import matplotlib
 matplotlib.use('TKAgg')
 import matplotlib.pyplot as plt
@@ -32,6 +33,11 @@ def price_hist(data):
     plt.ylabel('Frequency')
     plt.show()
 
+# function to calculate combinations nCr
+def nCr(n,r):
+    f = math.factorial
+    return f(n) / f(r) / f(n-r)
+
 # checks if methos is implemented in a class
 def check_class(_class, attribute):
     try:
@@ -53,10 +59,10 @@ def pricer_report(S0, K, T, r, sigma, steps, sim, op_type):
     # get option prices
     risk_neutral_price = round(pricer.riskNeutral(asset_prices), 4)
     black_scholes = round(pricer.blackScholes(), 4)
+    binomial_price = round(pricer.binomialTree(),4)
     pricing_error = round(pricer.blackScholes() -
                           pricer.riskNeutral(asset_prices), 10)
-    percent_error = round(
-        pricing_error / pricer.riskNeutral(asset_prices), 4) * 100
+    percent_error = round(pricing_error / pricer.riskNeutral(asset_prices), 4) * 100
 
     print("........... Option Pricing ........................\n")
     print("Risk neutral pricing method")
@@ -65,6 +71,9 @@ def pricer_report(S0, K, T, r, sigma, steps, sim, op_type):
     print("\nBlack-Scholes pricing method")
     print("Option type     : {} ".format(pricer.op_type))
     print("Option price    : {} ".format(black_scholes))
+    print("\nBinomial Tree pricing method")
+    print("Option type     : {} ".format(pricer.op_type))
+    print("Option price    : {} ".format(binomial_price))
     print("\nPricing error   : {} ".format(pricing_error))
     print("Percent error   : {} %\n".format(percent_error))
     print("..................................................")
